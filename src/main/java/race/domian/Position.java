@@ -47,7 +47,7 @@ public class Position {
         return Objects.hash(position);
     }
 
-    public int compare(Car car) {
-        return position - car.getPosition();
+    public int compare(Position position) {
+        return Integer.compare(this.position, position.getPosition());
     }
 }
