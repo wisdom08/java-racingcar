@@ -20,4 +20,11 @@ public class StringTest {
         String[] split = input.split(",");
         assertThat(split).containsExactly("1");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = "(1,2)")
+    void substringTest(String input) {
+        String substring = input.substring(1).substring(0, input.length()-2);
+        assertThat(substring).isEqualTo("1,2");
+    }
 }
