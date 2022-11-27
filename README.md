@@ -22,6 +22,6 @@
 - [x] 주어진 값에서 괄호 제거
 
 요구사항3
-- [ ] 특정 위치의 문자를 가져온다.
-- [ ] 위치 값을 벗어나면 StringIndexOutOfBoundsException 발생
-- [ ] @DisplayName 활용해서 의도 드러내기
+- [x] 특정 위치의 문자를 가져온다.
+- [x] 위치 값을 벗어나면 StringIndexOutOfBoundsException 발생
+- [x] @DisplayName 활용해서 의도 드러내기
