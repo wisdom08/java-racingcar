@@ -20,15 +20,15 @@ public class StringTest {
     }
 
     @Test
-    @ValueSource(strings = "1")
-    void split_one(String input) {
+    void split_one() {
+        String input = "1";
         String[] split = input.split(",");
         assertThat(split).containsExactly("1");
     }
 
     @Test
-    @ValueSource(strings = "(1,2)")
-    void substringTest(String input) {
+    void substringTest() {
+        String input = "(1,2)";
         String substring = input.substring(1).substring(0, input.length()-2);
         assertThat(substring).isEqualTo("1,2");
     }
