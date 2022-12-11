@@ -3,6 +3,7 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,9 +12,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringTest {
 
     @ParameterizedTest
-    @ValueSource(strings = "1,2")
-    void splitTest(String input) {
-        String[] split = input.split(",");
+    @CsvSource(value = {"1,2:,"}, delimiter = ':')
+    void splitTest(String input, String separator) {
+        String[] split = input.split(separator);
         assertThat(split).isEqualTo(new String[]{"1", "2"});
     }
 
@@ -40,11 +41,11 @@ public class StringTest {
 
 
     @DisplayName("특정 위치의 문자를 가져올 때, 위치값을 벗어나면 StringIndexOutOfBoundsException 에러가 발생한다.")
-    @ValueSource(strings = "abc")
+    @CsvSource({"abc, -1", "abc, 3"})
     @ParameterizedTest
-    void charAtException(String input) {
+    void charAtException(String text, int index) {
         assertThatThrownBy(() -> {
-            input.charAt(100);
+            text.charAt(index);
         }).isInstanceOf(IndexOutOfBoundsException.class);
     }
 }
