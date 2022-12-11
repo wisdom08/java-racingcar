@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class StringTest {
 
@@ -36,7 +37,11 @@ public class StringTest {
     @ValueSource(strings = "abc")
     @ParameterizedTest
     void charAt(String input) {
-        assertThat(input.charAt(0)).isEqualTo('a');
+        assertAll(
+                () -> assertThat(input.charAt(0)).isEqualTo('a'),
+                () -> assertThat(input.charAt(1)).isEqualTo('b'),
+                () -> assertThat(input.charAt(2)).isEqualTo('c')
+        );
     }
 
 
