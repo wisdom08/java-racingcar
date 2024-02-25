@@ -1,7 +1,7 @@
 package study;
 
+
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -24,28 +24,21 @@ public class SetTest {
         numbers.add(3);
     }
 
-    @DisplayName("size() 메서드로 set 크기 확인")
     @Test
-    void getSize() {
-        //given & when
-        int size = numbers.size();
-
-        //then
-        assertThat(size).isEqualTo(3);
+    void size() {
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
-    @DisplayName("1, 2, 3의 값이 존재하는지")
-    @ParameterizedTest(name = "{index}: {displayName} name={0}")
-    @ValueSource(ints = {1, 2, 3})
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3})
     void contains(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 
-    @DisplayName("contains 실행 결과에 따라 true/false 반환")
-    @ParameterizedTest(name = "{index}: {displayName} name={0}")
-    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
-    void containsTrueOrFalse(int number, boolean expected) {
-        assertThat(numbers.contains(number)).isEqualTo(expected);
+    @ParameterizedTest
+    @CsvSource({ "1,true", "2,true", "3,true", "4,false", "5,false" })
+    void contains_true_false(int input, boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
     }
-
 }
+
